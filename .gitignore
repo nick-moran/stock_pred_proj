@@ -3,3 +3,4 @@ news_data.csv
 charts/
 news/
 .vscode/
+*.zip
