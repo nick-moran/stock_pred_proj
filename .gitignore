@@ -4,3 +4,4 @@ charts/
 news/
 .vscode/
 *.zip
+datasets/*
