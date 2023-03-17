@@ -5,3 +5,4 @@ news/
 .vscode/
 *.zip
 datasets/*
+**/__pycache__/**
