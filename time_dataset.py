@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import calendar
+from collections import Counter
 
 stock_time_format = '%H:%M'
 date_format = '%Y-%m-%d'
@@ -41,35 +42,39 @@ for row in stocks_ds.itertuples():
     
     day_of_week = calendar.day_name[date.weekday()]
 
-    if time >= datetime.strptime('20:30', stock_time_format):
+    if time > datetime.strptime('20:30', stock_time_format) or time < datetime.strptime('13:30', stock_time_format):
        continue
 
-    #need to get after 
     if day_of_week == "Monday" and time == datetime.strptime('13:30', stock_time_format):
-        t_w_l = dtime - timedelta(hours=6+48+13, minutes=0)
+        t_w_l = dtime - timedelta(hours=3+48+13, minutes=0)
     
     elif time == datetime.strptime('13:30', stock_time_format):
       t_w_l = dtime - timedelta(hours=16, minutes=0)
+
     else:
        t_w_l = dtime - timedelta(hours=1, minutes=0)
 
-    mask = (news_ds['dtime'] > t_w_l)  & (news_ds['dtime']  <= dtime)
+    mask = (news_ds['dtime'] > t_w_l) & (news_ds['dtime']  < dtime)
     
     news_for_hour = news_ds[mask]['text'].tolist()
-    
+
+    time_for_hour = news_ds[mask]['dtime'].tolist()
 
     dirs = [row.dir]*len(news_for_hour)
 
-    data = np.c_[news_for_hour, dirs]
+
+    data = np.c_[news_for_hour, dirs, time_for_hour]
     
+
     dataset.extend(data)
+
 
     # exit(1)
 
-df = pd.DataFrame(dataset, columns=['text','dir'])
+df = pd.DataFrame(dataset, columns=['text','dir', 'dtime'])
 
 
 df.to_csv('./log_datasets/hourly_apple_alt.csv')
-# print(df)
+print(df)
 
 
