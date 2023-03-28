@@ -4,3 +4,5 @@ charts/
 news/
 .vscode/
 *.zip
+**/*.csv
+**/*.pyc
