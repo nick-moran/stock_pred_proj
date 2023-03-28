@@ -6,3 +6,4 @@ news/
 *.zip
 **/*.csv
 **/*.pyc
+finbertlm

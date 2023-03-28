@@ -10,7 +10,7 @@ news_time_format = '%H:%M:%S'
 
 dtime_gen = lambda x,y: datetime.combine(x,y.time())
 
-news_ds = pd.read_csv("./datasets/news_data_filtered_unique.csv")
+news_ds = pd.read_csv("./datasets/news_data_unique.csv")
 
 print('news: ', len(news_ds))
 
@@ -71,7 +71,7 @@ for row in stocks_ds.itertuples():
 df = pd.DataFrame(dataset, columns=['text','dir', 'dtime'])
 
 
-df.to_csv('./log_datasets/hourly_apple_alt.csv')
+df.to_csv('./finbert_datasets/hourly_apple.csv')
 print(df)
 
 
