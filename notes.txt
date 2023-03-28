@@ -1,1 +1,4 @@
 stopwords reference: https://sraf.nd.edu/textual-analysis/stopwords/
+
+
+limit the data to on-hours (cut out the 21:30 or possibly more data)

@@ -1,8 +1,7 @@
 .ipynb_checkpoints/
-news_data.csv
 charts/
 news/
 .vscode/
 *.zip
-datasets/*
+**/*.csv
 **/__pycache__/**

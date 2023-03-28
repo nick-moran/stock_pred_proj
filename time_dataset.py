@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import calendar
-from collections import Counter
 
 stock_time_format = '%H:%M'
 date_format = '%Y-%m-%d'
@@ -68,8 +67,6 @@ for row in stocks_ds.itertuples():
 
     dataset.extend(data)
 
-
-    # exit(1)
 
 df = pd.DataFrame(dataset, columns=['text','dir', 'dtime'])
 
