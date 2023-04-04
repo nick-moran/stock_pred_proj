@@ -14,7 +14,7 @@ text = raw_news_df['text'].apply(lambda x: x[:600]).tolist()
 tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
 
 # keys = ['input_ids', 'token_type_ids', 'attention_mask']
-tokens_encoding = tokenizer(text[:2], padding='max_length', truncation=True, return_tensors="pt")
+tokens_encoding = tokenizer(text[:2], max_length=64, padding='max_length', truncation=True, return_tensors="pt")
 
 print(text[:2])
 
