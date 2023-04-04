@@ -12,3 +12,17 @@ class ValDataset(Dataset):
     
     def __getitem__(self, idx):
       return self.ids[idx], self.attn_mask[idx], self.t_type_ids[idx]
+    
+
+class LMDataset(Dataset):
+    def __init__(self, info_tensor, labels):
+      self.ids = info_tensor[:,0,:]
+      self.attn_mask = info_tensor[:,1,:]
+      self.t_type_ids = info_tensor[:,2,:]
+      self.labels = torch.tensor(labels, dtype=torch.float32)
+
+    def __len__(self):
+      return len(self.labels)
+    
+    def __getitem__(self, idx):
+      return self.ids[idx], self.attn_mask[idx], self.t_type_ids[idx], self.labels[idx]
