@@ -1,0 +1,2 @@
+Find when tweets taper off in days
+ -> said another way, we want to find the "apex" time in a day, after which less tweets appear and the stock is locked into moving in a direction
